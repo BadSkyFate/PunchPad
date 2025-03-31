@@ -1,9 +1,3 @@
-Perfect choice — a clean README shows off your project and gives it some polish.
-
-✍️ Here's a Good Starting README for PunchPad
-markdown
-Copy
-Edit
 # PunchPad 📝
 
 **PunchPad** is a note-taking Android application built with Java and Android Jetpack components. It allows users to create, organize, and manage notes in a simple, folder-based interface.
@@ -53,8 +47,10 @@ Sync with cloud storage
 
 Improve folder management UI
 
-💬 License
-MIT License — LICENSE
+## 💬 License
+This project is licensed for **personal and non-commercial use only**.  
+View full terms here: [LICENSE](https://github.com/BadSkyFate/PunchPad/blob/main/LICENSE)
+
 
 🤝 Contributing
 Pull requests welcome. For major changes, please open an issue first to discuss what you would like to change.
