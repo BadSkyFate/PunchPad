@@ -3,6 +3,7 @@ package com.example.punchpad;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
 
 @Entity(tableName = "folders")
 public class Folder {
@@ -30,6 +31,7 @@ public class Folder {
     }
 
     // Constructor with Parameters
+    @Ignore
     public Folder(String folderName, boolean favorited, long createdAt) {
         this.folderName = folderName;
         this.favorited = favorited;

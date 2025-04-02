@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FolderViewHolder extends RecyclerView.ViewHolder {
@@ -17,7 +18,7 @@ public class FolderViewHolder extends RecyclerView.ViewHolder {
 
     public FolderViewHolder(@NonNull View itemView) {
         super(itemView);
-        folderNameTextView = itemView.findViewById(R.id.folder_name);
+        folderNameTextView = itemView.findViewById(R.id.folderName);
         notesRecyclerView = itemView.findViewById(R.id.notes_recycler_view);
     }
 
@@ -26,7 +27,15 @@ public class FolderViewHolder extends RecyclerView.ViewHolder {
 
         if (isExpanded) {
             notesRecyclerView.setVisibility(View.VISIBLE);
-            notesAdapter.updateNotes(folder.getNotes());
+
+            List<Note> convertedNotes = new ArrayList<>();
+            for (String content : folder.getNotes()) {
+                Note note = new Note(content, System.currentTimeMillis(), -1);
+                convertedNotes.add(note);
+            }
+
+
+            notesAdapter.setAllNotes(convertedNotes);
             notesRecyclerView.setAdapter(notesAdapter);
         } else {
             notesRecyclerView.setVisibility(View.GONE);
@@ -34,8 +43,8 @@ public class FolderViewHolder extends RecyclerView.ViewHolder {
     }
 
     public static FolderViewHolder create(ViewGroup parent) {
-        // Corrected layout reference
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_item_folder, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.activity_item_folder, parent, false);
         return new FolderViewHolder(view);
     }
 

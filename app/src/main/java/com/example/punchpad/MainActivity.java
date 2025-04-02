@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
         // Setup RecyclerView for displaying folders
-        folderAdapter = new FolderAdapter(new ArrayList<>());
+        folderAdapter = new FolderAdapter(this, new ArrayList<>());
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(folderAdapter);
         recyclerView.setVerticalScrollBarEnabled(true); // Enable vertical scrollbar for RecyclerView
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
         noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
         noteViewModel.getAllFolders().observe(this, folders -> {
             if (folders != null) {
-                folderAdapter = new FolderAdapter(folders);
+                folderAdapter = new FolderAdapter(this, folders); // ✅ correct
+
                 recyclerView.setAdapter(folderAdapter);
             }
         });

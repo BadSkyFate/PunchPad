@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Note.class, Folder.class}, version = 4, exportSchema = true) // Incremented version to 4
+@Database(entities = {Note.class, Folder.class}, version = 4, exportSchema = false) // Incremented version to 4
 public abstract class NoteDatabase extends RoomDatabase {
 
     private static NoteDatabase instance;

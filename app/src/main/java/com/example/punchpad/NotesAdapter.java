@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +20,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
 
     public NotesAdapter(List<Note> notes) {
         this.notes = notes;
+    }
+    public NotesAdapter() {
+        this.notes = new java.util.ArrayList<>();
     }
 
     @NonNull
@@ -60,5 +63,27 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
             textViewContent = itemView.findViewById(R.id.textViewContent);
             textViewTimestamp = itemView.findViewById(R.id.textViewTimestamp);
         }
+    }
+    private List<Note> allNotes;
+
+    public void setAllNotes(List<Note> allNotes) {
+        this.allNotes = new ArrayList<>(allNotes);
+        this.notes = new ArrayList<>(allNotes);
+        notifyDataSetChanged();
+    }
+
+    public void filter(String query) {
+        if (query == null || query.trim().isEmpty()) {
+            notes = new ArrayList<>(allNotes);
+        } else {
+            List<Note> filteredList = new ArrayList<>();
+            for (Note note : allNotes) {
+                if (note.getContent().toLowerCase().contains(query.toLowerCase())) {
+                    filteredList.add(note);
+                }
+            }
+            notes = filteredList;
+        }
+        notifyDataSetChanged();
     }
 }

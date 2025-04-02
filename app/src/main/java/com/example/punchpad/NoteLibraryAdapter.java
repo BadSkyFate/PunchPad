@@ -67,6 +67,7 @@ public class NoteLibraryAdapter extends RecyclerView.Adapter<NoteLibraryAdapter.
             thirdNote = itemView.findViewById(R.id.thirdNote);
             folderContainer = itemView.findViewById(R.id.folderContainer);
             noteContainer = itemView.findViewById(R.id.noteContainer);
+
         }
     }
 }

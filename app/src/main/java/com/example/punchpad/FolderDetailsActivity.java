@@ -2,6 +2,7 @@ package com.example.punchpad;
 
 import android.os.Bundle;
 import android.widget.Button;
+import java.util.ArrayList;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +36,8 @@ public class FolderDetailsActivity extends AppCompatActivity {
         // Set up RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        notesAdapter = new NotesAdapter();
+        notesAdapter = new NotesAdapter(new ArrayList<>());
+
         recyclerView.setAdapter(notesAdapter);
 
         // Initialize ViewModel
@@ -63,12 +65,16 @@ public class FolderDetailsActivity extends AppCompatActivity {
     private void loadNotes() {
         noteViewModel.getNotesByFolderId(folderId).observe(this, notes -> {
             if (notes != null) {
-                notesAdapter.setNotes(notes);
+                notesAdapter.setAllNotes(notes);
+                // ✅ now matches your adapter method
+
             }
         });
     }
-
     private void filterNotes(String query) {
         notesAdapter.filter(query);
     }
 }
+
+
+
