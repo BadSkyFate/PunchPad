@@ -40,15 +40,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(folderAdapter);
         recyclerView.setVerticalScrollBarEnabled(true); // Enable vertical scrollbar for RecyclerView
 
-        // Initialize ViewModel and observe data
+        // Initialize ViewModel and load folders with previews
         noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
-        noteViewModel.getAllFolders().observe(this, folders -> {
-            if (folders != null) {
-                folderAdapter = new FolderAdapter(this, folders); // ✅ correct
-
-                recyclerView.setAdapter(folderAdapter);
-            }
-        });
+        List<FolderViewHolder.Folder> previewFolders = noteViewModel.getFoldersWithPreviews();
+        folderAdapter = new FolderAdapter(this, previewFolders);
+        recyclerView.setAdapter(folderAdapter);
 
         // Add New Note Button
         addNewNoteButton.setOnClickListener(v -> {

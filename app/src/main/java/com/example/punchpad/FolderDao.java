@@ -28,6 +28,10 @@ public interface FolderDao {
     @Query("SELECT * FROM folders ORDER BY created_at ASC")
     LiveData<List<Folder>> getAllFolders(); // Changed to LiveData for reactivity
 
+    // Retrieve all folders synchronously (added for preview system)
+    @Query("SELECT * FROM folders ORDER BY created_at ASC")
+    List<Folder> getAllFoldersSync();
+
     // Retrieve all folder names
     @Query("SELECT folder_name FROM folders ORDER BY folder_name ASC")
     LiveData<List<String>> getAllFolderNames(); // Changed to LiveData for dynamic updates

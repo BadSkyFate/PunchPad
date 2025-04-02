@@ -12,6 +12,9 @@ import java.util.List;
 @Dao
 public interface NoteDao {
 
+    @Query("SELECT * FROM notes WHERE folderId = :folderId ORDER BY timestamp DESC LIMIT 3")
+    List<Note> getRecentNotesForFolder(int folderId);
+
     // Insert a single note
     @Insert
     long insert(Note note);

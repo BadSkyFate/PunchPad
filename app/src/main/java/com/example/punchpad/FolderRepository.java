@@ -37,6 +37,24 @@ public class FolderRepository {
         }
     }
 
+    // Get folders with 3-note previews (Synchronous for UI population)
+    public List<FolderViewHolder.Folder> getFoldersWithPreviews() {
+        try {
+            List<Folder> folderEntities = folderDao.getAllFoldersSync();
+            List<FolderViewHolder.Folder> folders = new ArrayList<>();
+
+            for (Folder folderEntity : folderEntities) {
+                List<String> notes = noteDao.getLatestNotesByFolder(folderEntity.getId(), 3);
+                folders.add(new FolderViewHolder.Folder(folderEntity.getName(), notes));
+            }
+
+            return folders;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
     // Insert a new folder
     public long insert(Folder folder) {
         try {

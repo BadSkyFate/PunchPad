@@ -2,7 +2,7 @@
     <!-- Base white theme -->
     <style name="Base.Theme.PunchPad" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary colors -->
-        <item name="colorPrimary">@android:color/black</item>
+        <item name="colorPrimary">@android:color/holo_green_light</item>
         <item name="colorOnPrimary">@android:color/white</item>
 
         <!-- Background colors -->
@@ -20,7 +20,7 @@
 
     <!-- Button style: black background, white text -->
     <style name="BlackWhiteButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:backgroundTint">@android:color/black</item>
+        <item name="android:backgroundTint">@android:color/darker_gray</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 

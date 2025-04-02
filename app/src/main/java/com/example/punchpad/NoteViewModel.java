@@ -41,6 +41,11 @@ public class NoteViewModel extends AndroidViewModel {
         return folderRepository.getAllFolders();
     }
 
+    // Fetch folders with latest 3-note previews (Synchronous)
+    public List<FolderViewHolder.Folder> getFoldersWithPreviews() {
+        return folderRepository.getFoldersWithPreviews();
+    }
+
     // Insert a new folder
     public long insertFolder(Folder folder) {
         return folderRepository.insert(folder);
