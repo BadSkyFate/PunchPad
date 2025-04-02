@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.punchpad"
-        minSdk = 35 // Updated for compatibility with most devices
+        minSdk = 26 // Updated for compatibility with most devices
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
